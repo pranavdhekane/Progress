@@ -10,9 +10,9 @@ function App() {
 	return (
 		<>
 			<Nav/>
-			{/* <Hero/>
+			{/* <Hero/> */}
 			<Form />
-			<Submission /> */}
+			<Submission />
 			<div className='h-70 w-[50vw]'>
 				<Rating/>
 			</div>

@@ -75,21 +75,21 @@ app.get('/getLatest', async (req, res) => {
 });
 
 // Rating Data
-// app.get('/rating', async(req, res) => {
-//     const query = ` 
-//         select date AT TIME ZONE 'UTC' AS utc_date, date AT TIME ZONE 'Asia/Kolkata' AS local_date, emo_rate, phy_rate, int_rate
-//         from form_data
-//         order by date;
-//     `;
+app.get('/rating', async(req, res) => {
+    const query = ` 
+        select date AT TIME ZONE 'UTC' AS utc_date, date AT TIME ZONE 'Asia/Kolkata' AS local_date, emo_rate, phy_rate, int_rate
+        from form_data
+        order by date;
+    `;
 
-//     try {
-//         const result = await pool.query(query);
-//         res.status(200).json(result.rows);
-//     } catch (error) {
-//         console.error('Error fetching latest submissions:', error);
-//         res.status(500).json({ error: 'Internal Server Error' });
-//     }
-// })
+    try {
+        const result = await pool.query(query);
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error('Error fetching latest submissions:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+})
 
 // Start the server
 const PORT = 5000;

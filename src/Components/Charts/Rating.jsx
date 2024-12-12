@@ -1,5 +1,3 @@
-"use client"
-
 import { TrendingUp } from "lucide-react"
 import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
 import React, { useEffect } from 'react';
@@ -18,24 +16,6 @@ import {
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart"
-import { response } from "express";
-
-// useEffect(() => {
-//     fetch('http:localhost:5000/rating')
-//         .then((response) => {
-//             if (response.ok) {
-//                 return response.json();
-//             } else {
-//                 throw new Error('Failed to to fetchd rating data');
-//             }
-//         })
-//         .then((data) => {
-//             console.log(data);
-//         })
-//         .then((error) => {
-//             console.log('Error : ', error);
-//         });
-// }, []);
 
 const chartData = [
     { month: "January", desktop: 186, mobile: 80 },
@@ -57,10 +37,25 @@ const chartConfig = {
     },
 }
 
+function Rating() {
 
+    useEffect(() => {
+        fetch('http://localhost:5000/rating')
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Failed to to fetchd rating data');
+                }
+            })
+            .then((data) => {
+                console.log(data);
+            })
+            .then((error) => {
+                console.log('Error : ', error);
+            });
+    }, []);
 
-
-export default function Rating() {
     return (
         <Card>
             <CardHeader>
@@ -118,3 +113,6 @@ export default function Rating() {
         </Card>
     )
 }
+
+
+export default Rating

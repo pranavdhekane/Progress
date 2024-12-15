@@ -75,11 +75,11 @@ app.get('/getLatest', async (req, res) => {
 });
 
 // Rating Data
-app.get('/rating', async(req, res) => {
+app.get('/getData', async(req, res) => {
     const query = ` 
-        select date AT TIME ZONE 'UTC' AS utc_date, date AT TIME ZONE 'Asia/Kolkata' AS local_date, emo_rate, phy_rate, int_rate
-        from form_data
-        order by date;
+        SELECT *, date AT TIME ZONE 'UTC' AS utc_date, date AT TIME ZONE 'Asia/Kolkata' AS local_date
+        FROM form_data
+        ORDER BY date;
     `;
 
     try {
@@ -90,6 +90,35 @@ app.get('/rating', async(req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 })
+
+
+// Delete submission
+app.delete('/deleteSubmission', async (req, res) => {
+    const { date } = req.body;
+
+    if (!date) {
+        return res.status(400).json({ success: false, message: 'Date is required.' });
+    }
+
+    const query = `
+        DELETE FROM form_data
+        WHERE date = $1;
+    `;
+
+    try {
+        const result = await pool.query(query, [date]);
+
+        if (result.rowCount === 0) {
+            return res.status(404).json({ success: false, message: `No record found with date ${date}.` });
+        }
+
+        res.json({ success: true, message: `Record with date ${date} deleted successfully.` });
+    } catch (error) {
+        console.error('Error running delete query:', error);
+        res.status(500).json({ success: false, message: 'Server error. Please try again later.' });
+    }
+});
+
 
 // Start the server
 const PORT = 5000;

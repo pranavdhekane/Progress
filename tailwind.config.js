@@ -5,7 +5,7 @@ module.exports = {
     "./index.html",
     "./src/**/*.{ts,tsx,js,jsx}",
     "./node_modules/@shadcn/ui/dist/**/*.{js,ts,jsx,tsx}",
-	"!./src/Components/Form/Form.jsx",
+	// "!./src/Components/Form/Form.jsx",
   ],
   theme: {
   	extend: {

@@ -45,7 +45,7 @@ function IntellectualRate(props) {
         <Card>
             <CardHeader>
                 <CardTitle>Intellectual Rating</CardTitle>
-                <CardDescription>December 2024 - ...</CardDescription>
+                <CardDescription>{props.range}</CardDescription>
             </CardHeader>
             <CardContent>
                 <ChartContainer config={chartConfig}>
@@ -86,6 +86,7 @@ function IntellectualRate(props) {
 
 IntellectualRate.propTypes = {
     data : PropTypes.array,
+    range : PropTypes.string
 }
 
 export default IntellectualRate;

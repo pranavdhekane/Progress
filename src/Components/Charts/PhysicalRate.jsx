@@ -45,7 +45,7 @@ function PhysicalRate(props) {
         <Card>
             <CardHeader>
                 <CardTitle>Physical Rating</CardTitle>
-                <CardDescription>December 2024 - ...</CardDescription>
+                <CardDescription>{props.range}</CardDescription>
             </CardHeader>
             <CardContent>
                 <ChartContainer config={chartConfig}>
@@ -85,6 +85,7 @@ function PhysicalRate(props) {
 
 PhysicalRate.propTypes = {
     data: PropTypes.array,
+    range : PropTypes.string
 }
 
 

@@ -30,10 +30,10 @@ function Nav() {
                         <a href="/">Home</a>
                     </li>
                     <li className="hover:text-gray-300">
-                        <a href="/submission">Submission</a>
+                        <a href="/charts">Visualize</a>
                     </li>
                     <li className="hover:text-gray-300">
-                        <a href="/charts">Charts</a>
+                        <a href="/submission">Your Data</a>
                     </li>
                     <li className="bg-neutral-800 hover:bg-black  border-2 p-2 rounded-lg">
                         <a href="/form">List Today</a>
@@ -52,13 +52,13 @@ function Nav() {
                         <a href="/">Home</a>
                     </li>
                     <li className="hover:text-gray-500">
-                        <a href="/form">Form</a>
+                        <a href="/charts">Visualize</a>
                     </li>
                     <li className="hover:text-gray-500">
-                        <a href="/submission">Submissions</a>
+                        <a href="/submission">Your Data</a>
                     </li>
                     <li className="hover:text-gray-500">
-                        <a href="/charts">Charts</a>
+                        <a href="/form">List Today</a>
                     </li>
                 </ul>
             </div>

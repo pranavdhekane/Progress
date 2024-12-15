@@ -45,7 +45,7 @@ function EmotionalRate(props) {
         <Card>
             <CardHeader>
                 <CardTitle>Emotional Ratings</CardTitle>
-                <CardDescription>December 2024 - ...</CardDescription>
+                <CardDescription>{props.range}</CardDescription>
             </CardHeader>
             <CardContent>
                 <ChartContainer config={chartConfig}>
@@ -84,6 +84,7 @@ function EmotionalRate(props) {
 
 EmotionalRate.propTypes = {
     data : PropTypes.array,
+    range : PropTypes.range
 }
 
 export default EmotionalRate;

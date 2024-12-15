@@ -61,8 +61,7 @@ app.get('/getLatest', async (req, res) => {
     const query = `
         SELECT *, date AT TIME ZONE 'UTC' AS utc_date, date AT TIME ZONE 'Asia/Kolkata' AS local_date
         FROM form_data
-        ORDER BY date DESC
-        LIMIT 10;
+        ORDER BY date DESC;
     `;
 
     try {

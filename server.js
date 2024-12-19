@@ -15,7 +15,7 @@ const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
     database: 'progressdb',
-    password: 'pranav@06',
+    password: 'your_password',
     port: 5432,
 });
 

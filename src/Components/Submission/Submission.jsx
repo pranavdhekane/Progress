@@ -40,23 +40,25 @@ function Submissions() {
     }, []);
 
     const deleteSubmission = async (date) => {
-        try {
-            const response = await fetch('http://localhost:5000/deleteSubmission', {
-                method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ date }),
-            });
+        if (confirm("Are you sure!!")) {
+            try {
+                const response = await fetch('http://localhost:5000/deleteSubmission', {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ date }),
+                });
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || 'Failed to delete submission');
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Failed to delete submission');
+                }
+
+                const result = await response.json();
+                alert(result.message);
+            } catch (error) {
+                console.error('Error deleting submission:', error.message);
+                alert(error.message);
             }
-
-            const result = await response.json();
-            alert(result.message);
-        } catch (error) {
-            console.error('Error deleting submission:', error.message);
-            alert(error.message);
         }
     };
 
@@ -76,7 +78,7 @@ function Submissions() {
 
     return (
         <>
-            <div className="flex justify-center flex-wrap [&>*]:w-[90vw] lg:[&>*]:w-[30vw] md:[&>*]:w-[45vw] gap-2 my-5">
+            <div className="flex justify-center flex-wrap [&>*]:w-[90vw] lg:[&>*]:w-[30vw] md:[&>*]:w-[45vw] gap-2 my-5 min-w-[75vh]">
                 {submissions.length === 0 ? (
                     <p>No submissions found.</p>
                 ) : (
@@ -129,44 +131,45 @@ function Submissions() {
                     })
                 )}
             </div>
-			<div className='bg-black mx-10 my-3 text-white px-3 py-2 rounded-lg'>
+            <div className='h-auto'></div>
+            <div className='bg-black mx-10 my-3 text-white px-3 py-2 rounded-lg'>
 
-            <Pagination >
-                <PaginationContent>
-                    <PaginationItem>
-                        <PaginationPrevious
-                            href="#"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                if (currentPage > 1) paginate(currentPage - 1);
-                            }}
-							/>
-                    </PaginationItem>
-                    {[...Array(totalPages)].map((_, index) => (
-						<PaginationItem key={index}>
-                            <PaginationLink
+                <Pagination >
+                    <PaginationContent>
+                        <PaginationItem>
+                            <PaginationPrevious
                                 href="#"
                                 onClick={(e) => {
-									e.preventDefault();
-                                    paginate(index + 1);
+                                    e.preventDefault();
+                                    if (currentPage > 1) paginate(currentPage - 1);
                                 }}
-                            >
-                                {index + 1}
-                            </PaginationLink>
+                            />
                         </PaginationItem>
-                    ))}
-                    <PaginationItem>
-                        <PaginationNext
-                            href="#"
-                            onClick={(e) => {
-								e.preventDefault();
-                                if (currentPage < totalPages) paginate(currentPage + 1);
-                            }}
-							/>
-                    </PaginationItem>
-                </PaginationContent>
-            </Pagination>
-							</div>
+                        {[...Array(totalPages)].map((_, index) => (
+                            <PaginationItem key={index}>
+                                <PaginationLink
+                                    href="#"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        paginate(index + 1);
+                                    }}
+                                >
+                                    {index + 1}
+                                </PaginationLink>
+                            </PaginationItem>
+                        ))}
+                        <PaginationItem>
+                            <PaginationNext
+                                href="#"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    if (currentPage < totalPages) paginate(currentPage + 1);
+                                }}
+                            />
+                        </PaginationItem>
+                    </PaginationContent>
+                </Pagination>
+            </div>
         </>
     );
 }

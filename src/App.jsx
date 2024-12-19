@@ -6,6 +6,7 @@ import Nav from './Components/Navbar/Nav';
 import Hero from './Components/Hero/Hero';
 import Footer from './Components/Footer/Footer';
 import Charts from './Components/Charts/Charts';
+import About from './Components/About/About';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
 				<Route path="/form" element={<Form />} />
 				<Route path="/charts" element={<Charts />} />
 				<Route path="/submission" element={<Submission />} />
+				<Route path="/about" element={<About />} />
 			</Routes>
 			<Footer />
 			{/* <Hero/> */}

@@ -35,6 +35,9 @@ function Nav() {
                     <li className="hover:text-gray-300">
                         <a href="/submission">Your Data</a>
                     </li>
+                    <li className="hover:text-gray-300">
+                        <a href="/about">About</a>
+                    </li>
                     <li className="bg-neutral-800 hover:bg-black  border-2 p-2 rounded-lg">
                         <a href="/form">List Today</a>
                     </li>
@@ -56,6 +59,9 @@ function Nav() {
                     </li>
                     <li className="hover:text-gray-500">
                         <a href="/submission">Your Data</a>
+                    </li>
+                    <li className="hover:text-gray-500">
+                        <a href="/about">About</a>
                     </li>
                     <li className="hover:text-gray-500">
                         <a href="/form">List Today</a>

@@ -2,7 +2,7 @@
 function About() {
 
     return (
-        <div className="px-10 md:px-20 py-5">
+        <div className="px-[10vw] py-5">
             <h1 className="text-3xl font-bold text-gray-900 mb-6">About Progress</h1>
             <p className="text-lg mb-3">
                 Progress is a project I, <span className="font-semibold">Pranav Dhekane</span>, made for fun and as a way to implement the knowledge I gained while learning React. It started as practice for React and gradually grew as I incorporated new tools like Tailwind CSS and ShadCN UI that I learned along the way. Its primary purpose is to track personal progress and self-reflection, much like keeping a journal, but on your computer.

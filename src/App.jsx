@@ -1,5 +1,4 @@
 import Form from './Components/Form/Form';
-import React, { useState } from 'react';
 import Submission from './Components/Submission/Submission';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Nav from './Components/Navbar/Nav';
@@ -21,13 +20,6 @@ function App() {
 				<Route path="/about" element={<About />} />
 			</Routes>
 			<Footer />
-			{/* <Hero/> */}
-			{/* <Form />
-			<Submission />
-			
-
-			<Footer/> */}
-
 		</Router>
 	);
 }

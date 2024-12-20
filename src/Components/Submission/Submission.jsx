@@ -78,7 +78,7 @@ function Submissions() {
 
     return (
         <>
-            <div className="flex justify-center flex-wrap [&>*]:w-[90vw] lg:[&>*]:w-[30vw] md:[&>*]:w-[45vw] gap-2 my-5 min-w-[75vh]">
+            <div className="flex justify-center flex-wrap [&>*]:w-[90vw] lg:[&>*]:w-[30vw] md:[&>*]:w-[45vw] gap-4 my-5 min-h-[75vh]">
                 {submissions.length === 0 ? (
                     <p>No submissions found.</p>
                 ) : (
@@ -89,9 +89,12 @@ function Submissions() {
                             day: 'numeric',
                         });
                         return (
-                            <Card key={index} className="bg-zinc-900 text-white border-black border-4">
+                            <Card key={index} className="bg-zinc-900 text-white border-black border-4 min-h-[50vh]">
                                 <CardHeader className="text-lg ">
-                                    <CardTitle>{localDate}</CardTitle>
+                                    <CardTitle className='flex justify-between items-center'>
+                                        {localDate}
+                                        <Button onClick={() => deleteSubmission(localDate)} className="bg-zinc-800 border-2 border-red-700 text-red-600 w-fit">Delete</Button>
+                                    </CardTitle>
                                 </CardHeader>
                                 <CardContent className="text-sm [&>div>span]:inline-block [&>div>span]:min-w-[50%] [&>div]:flex ">
                                     <div>
@@ -119,19 +122,12 @@ function Submissions() {
                                         <span> Message </span> : {submission.message}
                                     </div>
                                 </CardContent>
-                                <CardFooter>
-                                    <div className="w-full flex justify-between">
-                                        <div>
-                                            <Button onClick={() => deleteSubmission(localDate)} className="bg-zinc-800 border-2 border-red-700 text-red-600">Delete</Button>
-                                        </div>
-                                    </div>
-                                </CardFooter>
                             </Card>
                         );
                     })
                 )}
             </div>
-            <div className='h-auto'></div>
+
             <div className='bg-black mx-10 my-3 text-white px-3 py-2 rounded-lg'>
 
                 <Pagination >

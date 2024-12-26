@@ -1,4 +1,4 @@
-import s from './List.module.css';
+// import s from './List.module.css';
 import PropTypes from 'prop-types';
 import React, {useState} from 'react';
 
@@ -15,9 +15,10 @@ function List(props){
             setNewTask("");
         }
     }
-
+    
     function handleKeyDown(e){
         if(e.key === "Enter"){
+            e.preventDefault();
             addTask();
         } 
     }
@@ -27,16 +28,17 @@ function List(props){
     }
 
     return(
-        <div className={s.container}>
+        <div >
+        {/* <div className={s.container}> */}
             <label>
                 {props.title}
             </label>
-            <input type="text" placeholder='Press enter to add' value = {newTask} onChange={handleInputChange} onKeyDown={handleKeyDown}/>
+            <input type="text" placeholder='Press enter to add' value = {newTask} onChange={handleInputChange} onKeyDown={handleKeyDown} className='w-full min-h-8 px-5 rounded-sm bg-black border'/>
             <ul>
                 {
                     props.tasks.map((task, index) => 
                         <li key={index} onClick={()=>deleteTask(index)}>
-                            {task}
+                            <span className='text-red-500 px-2 text-sm'>x</span> {task}
                         </li>
                     )
                 }
